@@ -18,13 +18,36 @@ function solution(board) {
     const boardLength = board.length
     // arr를 0으로 초기화한다(arr은 해당 위치까지 이동하는데에 걸리는 금액이 들어있다)
     // 초기금액은 계산하기 전이므로 0이다
-    const arr = Array.from(Array(boardLength), () => Array(boardLength).fill(0))
-    const queue = [];   // 우선순위큐 를 사용하지 않고 일반 배열로서 확인(이후 우선순위큐 를 이용해서 할 수 있는방법을 찾아본다)
+    // const tmp = Array.from(Array(boardLength), () => Array(boardLength).fill(1000000000))
+    // const arr = Array(4).fill(tmp)
+    const arr = new Array(4);
+
+    for (let i = 0; i < 4; i++) {
+        arr[i] = create2DArray(boardLength, boardLength)
+    }
+
+    for (let d = 0; d < 4; d++) {
+        for (let i = 0; i < boardLength; i++) {
+            for (let j = 0; j < boardLength; j++) {
+                arr[d][j][i] = 1000000000
+            }
+        }
+    }
+
+    arr[0][0][0] = 0
+    arr[1][0][0] = 0
+    // const queue = new PriorityQueue();   // 우선순위큐 를 사용하지 않고 일반 배열로서 확인(이후 우선순위큐 를 이용해서 할 수 있는방법을 찾아본다)
+    const queue = []   // 우선순위큐 를 사용하지 않고 일반 배열로서 확인(이후 우선순위큐 를 이용해서 할 수 있는방법을 찾아본다)
     const dijkstra = () => {
-        queue.push([0, 0, 1, 0]) // (0, 0) 시작해서 오른쪽 이동, 금액은 0원
+        // queue.enQueue([0, 0, 0, 0]) // (0, 0) 시작해서 아래로 이동, 금액은 0원
+        // queue.enQueue([0, 0, 1, 0]) // (0, 0) 시작해서 오른쪽 이동, 금액은 0원
         queue.push([0, 0, 0, 0]) // (0, 0) 시작해서 아래로 이동, 금액은 0원
-        while(queue.length) {
+        queue.push([0, 0, 1, 0]) // (0, 0) 시작해서 오른쪽 이동, 금액은 0원
+
+        while(queue.length) {   // 일반 array 이용
+            // while(!queue.isEmpty()) {    // 구현한 큐 이용
             let now = queue.shift()   // 현재 queue에 저장된 위치좌표 GET
+            // let now = queue.deQueue()    // 구현한 큐 이용
             let y = now[0]    // 현재 y좌표
             let x = now[1]    // 현재 x좌표
             let direction = now[2]    // 현재 진행방향
@@ -42,30 +65,46 @@ function solution(board) {
                 let nx = x + dx[i]    // 다음 x 좌표
 
                 if (ny < 0 || nx < 0    // 현재 y, x 좌표가 0보다 낮거나
-                    || ny > boardLength - 1 || nx > boardLength - 1 // board의 크기보다 크거나
-                    || board[ny][nx]    // board[ny][nx]의 위치가 1 인 경우(막혀있는 경우)
+                    || ny > boardLength -1 || nx > boardLength -1 // board의 크기보다 크거나
+                    || board[ny][nx]   // board[ny][nx]의 위치가 1 인 경우(막혀있는 경우)
                 ) continue   // 수행하지 않고 다음 수행
 
                 // 추가되는 금액은 만일 같은 축으로 이동하는 경우(0, 2 y축이동 / 1, 3 x축이동) 100원을 추가하며, 다른 축으로 이동하는 경우 코너(500) + 100원을 추가한다
-                let charge = (direction === i) ? cost + 100 : cost + 600
-                // arr[ny][nx] 가 아직 계산되지 않았거나(방문전)
-                // 이전에 arr[ny][nx]에 방문하면서 계산한 금액보다 지금 금액이 작은 경우
-                if (!arr[ny][nx] || (arr[ny][nx] >= charge)) {
-                    arr[ny][nx] = charge    // 최소금액으로 다시 작성한다
-                    queue.push([ny, nx, i, charge])
+                let charge = 0
+                if (direction === i) charge = cost + 100
+                else charge = cost + 600
+                // arr[i][ny][nx] 가 아직 계산되지 않았거나(방문전)
+                // 이전에 arr[i][ny][nx]에 방문하면서 계산한 금액보다 지금 금액이 작은 경우
+                if (arr[i][ny][nx] >= charge) {
+                    // queue.enQueue([ny, nx, i, charge])   // 구현한 큐 이용
+                    queue.push([ny, nx, i, charge]) // 일반 array 이용
+                    arr[i][ny][nx] = charge    // 최소금액으로 다시 작성한다
                 }
             }
         }
     }
+
     dijkstra()
+
     return answer;
 }
 
-// 우선순위 큐 구현
+function create2DArray (rows, columns) {
+    const arr = new Array(rows);
+    for (let i = 0; i < rows; i++) {
+        arr[i] = new Array(columns);
+    }
+    return arr;
+}
+
 class PriorityQueue {
     constructor() {
         this.queue = [];
         this.lastIndex = 0;
+    }
+
+    isEmpty() {
+        return this.queue.length === 0
     }
 
     enQueue(data) {
@@ -79,12 +118,11 @@ class PriorityQueue {
 
             if (parentIndex < 0) break;
 
-            if (this.queue[parentIndex] < data) {
+            if (this.queue[parentIndex][3] < data[3]) {
                 this.queue[childIndex] = this.queue[parentIndex];
                 this.queue[parentIndex] = data;
             }
         }
-
         this.lastIndex++;
     }
 
@@ -108,13 +146,21 @@ class PriorityQueue {
             const right = this.queue[rightIndex];
 
             const compareIndex = left > right ? leftIndex : rightIndex;
-            const compare = this.queue[compareIndex];
+            let compare = this.queue[compareIndex];
 
-            if (this.queue[currentIndex] < compare) {
-                this.queue[compareIndex] = this.queue[currentIndex];
-                this.queue[currentIndex] = compare;
-                currentIndex = compareIndex;
-            } else break;
+            if (compare !== undefined) {
+                if (this.queue[currentIndex][3] < compare[3]) {
+                    this.queue[compareIndex] = this.queue[currentIndex];
+                    this.queue[currentIndex] = compare;
+                    currentIndex = compareIndex;
+                } else break;
+            } else {
+                if (this.queue[currentIndex][3] < compare) {
+                    this.queue[compareIndex] = this.queue[currentIndex];
+                    this.queue[currentIndex] = compare;
+                    currentIndex = compareIndex;
+                } else break;
+            }
         }
 
         return result;
