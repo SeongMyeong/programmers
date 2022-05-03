@@ -79,6 +79,7 @@ function solution(board) {
                     // queue.enQueue([ny, nx, i, charge])   // 구현한 큐 이용
                     queue.push([ny, nx, i, charge]) // 일반 array 이용
                     arr[i][ny][nx] = charge    // 최소금액으로 다시 작성한다
+                    queue.sort((a, b) => a[3] - b[3])   // sort 하는부분이 왜 필요?
                 }
             }
         }
