@@ -11,3 +11,4 @@
 
 * [67259 파일 문제 원본](https://programmers.co.kr/learn/courses/30/lessons/67259)
 * [60058 파일 문제 원본](https://programmers.co.kr/learn/courses/30/lessons/60058)
+* [72410 파일 문제 원본](https://programmers.co.kr/learn/courses/30/lessons/72410)
