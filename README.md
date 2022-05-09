@@ -9,6 +9,7 @@
 
 /python/: <img alt="Python" src ="https://img.shields.io/badge/Python-3776AB.svg?&style=for-the-badge&logo=Python&logoColor=white"/>
 
+<em>문제 원본</em>
 * [67259 파일 문제 원본](https://programmers.co.kr/learn/courses/30/lessons/67259)
 * [60058 파일 문제 원본](https://programmers.co.kr/learn/courses/30/lessons/60058)
 * [72410 파일 문제 원본](https://programmers.co.kr/learn/courses/30/lessons/72410)
