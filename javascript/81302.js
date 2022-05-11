@@ -29,15 +29,13 @@ function checkBoardPass(board) {
                     const ny = y + dy[i]
                     const nx = x + dx[i]
                     
-                    // board 를 벗어나는 경우 continue
                     if (ny < 0 || nx < 0 
-                        || ny > board.length - 1 || nx > board.length - 1)
+                        || ny > board.length - 1 || nx > board.length - 1
+                        || board[ny][nx] === 'X')
                         continue
                     if (board[ny][nx] === 'P') {    // 상하좌우 칸에 'P'(사람) 인 경우 break
                         isPass = 0
                         break
-                    } else if (board[ny][nx] === 'X') { // 상하좌우 칸이 'X'(파티션) 인 경우 continue
-                        continue
                     } else {    // 상하좌우 칸이 'O'(뚫림) 인 경우 그 칸을 기준으로 상하좌우 확인
                         for (let j = 0; j < 4; j++) {
                             if (isPass === 0) break
@@ -53,7 +51,8 @@ function checkBoardPass(board) {
                             // nny와 nnx 가 이전의 좌표를 가르키는 경우 continue
                             // 1차시기에 ny와 nx로 했을 때 8문항 실패(3, 5, 8, 11, 13, 16, 31)
                             // 2차시기에 y와 x로 했을 때 3문항 실패(3, 8, 31)
-                            if (nny === y || nnx === x) continue
+                            // 3차시기에 && 연산자로 처리했더니 통과
+                            if (nny === y && nnx === x) continue
                             // 사람이 앉아있으면 isPass를 0으로 바꾸고 break
                             if (board[nny][nnx] === 'P') {
                                 isPass = 0
