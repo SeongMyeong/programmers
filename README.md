@@ -22,3 +22,4 @@
 * [86051 파일 문제 원본](https://programmers.co.kr/learn/courses/30/lessons/86051) / 1레벨
 * [12973 파일 문제 원본](https://programmers.co.kr/learn/courses/30/lessons/12973) / 2레벨
 * [12977 파일 문제 원본](https://programmers.co.kr/learn/courses/30/lessons/12977) / 1레벨
+* [12899 파일 문제 원본](https://programmers.co.kr/learn/courses/30/lessons/12899) / 2레벨
