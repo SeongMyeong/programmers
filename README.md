@@ -11,7 +11,7 @@
 
 <em>문제 원본</em>
 * [67259 파일 문제 원본](https://programmers.co.kr/learn/courses/30/lessons/67259)
-* [60058 파일 문제 원본](https://programmers.co.kr/learn/courses/30/lessons/60058) / 2
+* [60058 파일 문제 원본](https://programmers.co.kr/learn/courses/30/lessons/60058) / 2레벨
 * [72410 파일 문제 원본](https://programmers.co.kr/learn/courses/30/lessons/72410)
 * [81301 파일 문제 원본](https://programmers.co.kr/learn/courses/30/lessons/81301)
 * [67256 파일 문제 원본](https://programmers.co.kr/learn/courses/30/lessons/67256)
@@ -25,3 +25,4 @@
 * [12899 파일 문제 원본](https://programmers.co.kr/learn/courses/30/lessons/12899) / 2레벨
 * [72411 파일 문제 원본](https://programmers.co.kr/learn/courses/30/lessons/72411) / 2레벨
 * [64065 파일 문제 원본](https://programmers.co.kr/learn/courses/30/lessons/64065) / 2레벨
+* [42889 파일 문제 원본](https://programmers.co.kr/learn/courses/30/lessons/42889) / 1레벨
