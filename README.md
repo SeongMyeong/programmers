@@ -11,7 +11,7 @@
 
 <em>문제 원본</em>
 * [67259 파일 문제 원본](https://programmers.co.kr/learn/courses/30/lessons/67259)
-* [60058 파일 문제 원본](https://programmers.co.kr/learn/courses/30/lessons/60058)
+* [60058 파일 문제 원본](https://programmers.co.kr/learn/courses/30/lessons/60058) / 2
 * [72410 파일 문제 원본](https://programmers.co.kr/learn/courses/30/lessons/72410)
 * [81301 파일 문제 원본](https://programmers.co.kr/learn/courses/30/lessons/81301)
 * [67256 파일 문제 원본](https://programmers.co.kr/learn/courses/30/lessons/67256)
