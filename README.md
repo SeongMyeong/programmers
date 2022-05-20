@@ -30,3 +30,4 @@
 * [17677 파일 문제 원본](https://programmers.co.kr/learn/courses/30/lessons/17677) / 2레벨
 * [42748 파일 문제 원본](https://programmers.co.kr/learn/courses/30/lessons/42748) / 1레벨
 * [12982 파일 문제 원본](https://programmers.co.kr/learn/courses/30/lessons/12982) / 1레벨
+* [42746 파일 문제 원본](https://programmers.co.kr/learn/courses/30/lessons/42746) / 2레벨 
