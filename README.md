@@ -38,3 +38,4 @@
 
 -- 주소 바뀜
 * [87377 파일 문제 원본](https://school.programmers.co.kr/learn/courses/30/lessons/87377) / 2레벨
+* [12945 파일 문제 원본](https://school.programmers.co.kr/learn/courses/30/lessons/12945) / 2레벨
